@@ -1,9 +1,8 @@
 package com.example.oneilbogle.notetoself;
 
 
-
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -35,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
                 dialog.sendNoteSelected(mTempNote);
 
                 // Create the dialog
-                //dialog.show(getFragmentManager(), "123");
+                dialog.show(getSupportFragmentManager(), "123");
             }
         });
 
@@ -72,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (id == R.id.action_add) {
             DialogNewNote dialog = new DialogNewNote();
-          //  dialog.show(getFragmentManager(), "");
+          dialog.show(getSupportFragmentManager(), "");
             return true;
         }
 
