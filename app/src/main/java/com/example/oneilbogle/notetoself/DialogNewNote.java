@@ -18,7 +18,7 @@ public class DialogNewNote extends DialogFragment {
 
 
     @Override
-    public Dialog onCreateDialog(Bundle saveInstanceState){
+    public Dialog onCreateDialog(Bundle saveInstanceState) {
 
 
         //declare an initialize an AlertDialog.Builder object
@@ -29,7 +29,6 @@ public class DialogNewNote extends DialogFragment {
 
         // Inflater.inflate replaces setConentView for our Xml
         View dialogView = inflater.inflate(R.layout.dialog_new_note, null);
-
 
 
         final EditText editTitle = (EditText) dialogView.findViewById
@@ -49,11 +48,51 @@ public class DialogNewNote extends DialogFragment {
                 (R.id.checkBoxImportant);
 
 
-
         Button btnCancel = (Button) dialogView.findViewById(R.id.btnCancel);
 
         Button btnOK = (Button) dialogView.findViewById(R.id.btnOK);
 
+
+        builder.setView(dialogView).setMessage("Add a new note");
+
+        // Handle the cancel button
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
+            }
+        });
+
+
+
+        // Handle the OK button
+        btnOK.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                // Create a new note
+                Note newNote = new Note();
+
+                // Set its variables to match the users entries on the form
+                newNote.setTitle(editTitle.getText().toString());
+                newNote.setDescription(editDescription.getText().toString());
+                newNote.setIdea(checkBoxIdea.isChecked());
+                newNote.setTodo(checkBoxTodo.isChecked());
+                newNote.setImportant(checkBoxImportant.isChecked());
+
+                MainActivity callingActivity = (MainActivity) getActivity();
+
+                // Pass newNote back to MainActivity
+                //callingActivity.createNewNote(newNote);
+
+                // Quit the dialog
+                dismiss();
+            }
+        });
+
+
+        return builder.create();
 
 
     }

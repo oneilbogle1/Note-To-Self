@@ -19,5 +19,4 @@
     <string name="rb_none">None</string>
     <string name="textview">TextView</string>
     <string name="some_text">some Text</string>
-    <string name="large_text">Large text</string>
 </resources>
